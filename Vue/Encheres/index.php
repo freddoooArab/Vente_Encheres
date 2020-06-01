@@ -8,7 +8,7 @@ foreach ($encheres as $enchere):
     ?>
     <?php 
         ?>
-        <p><?= $this->nettoyer($enchere['date']) ?>, <?= $this->nettoyer($enchere['auteur']) ?> dit <?= $this->nettoyer($enchere['prive']) ? '(EN PRIVÉ)' : '' ?> : <br/>
+        <p><?= $this->nettoyer($enchere['date']) ?>, <?= $this->nettoyer($enchere['auteur']) ?><br/>
             <strong><?= $this->nettoyer($enchere['nom_enchere']) ?></strong><br/>
             <?= $this->nettoyer($enchere['texte']) ?><br />
             <!-- Vers Adminproduits si utilisateur en session -->

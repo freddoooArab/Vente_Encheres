@@ -18,7 +18,6 @@ class Enchere extends Modele {
                     . ' c.nom_enchere,'
                     . ' c.texte,'
                     . ' c.produit_id,'
-                    . ' c.prive,'
                     . ' c.efface,'
                     . ' a.nom as titreProduit'
                     . ' FROM encheres c'
@@ -43,17 +42,16 @@ class Enchere extends Modele {
                     . ' e.nom_enchere,'
                     . ' e.texte,'
                     . ' e.produit_id,'
-                    . ' e.prive,'
                     . ' e.efface,'
                     . ' a.nom as nomProduit'
                     . ' FROM encheres e'
                     . ' INNER JOIN produits a'
                     . ' ON e.produit_id = a.id'
-                    . ' WHERE e.efface = 0 AND e.prive = 0'
+                    . ' WHERE e.efface = 0'
                     . ' ORDER BY id desc';
         } else {
             $sql = 'SELECT * FROM encheres'
-                    . ' WHERE produit_id = ? AND efface = 0 AND prive = 0'
+                    . ' WHERE produit_id = ? AND efface = 0'
                     . ' ORDER BY id desc';;
         }
         $encheres = $this->executerRequete($sql, [$idProduit]);
@@ -98,14 +96,12 @@ class Enchere extends Modele {
                 . ' auteur,'
                 . ' titre,'
                 . ' texte,'
-                . ' prive)'
                 . ' VALUES(?, NOW(), ?, ?, ?, ?)';
         $result = $this->executerRequete($sql, [
             $enchere['produit_id'],
             $enchere['auteur'],
             $enchere['titre'],
-            $enchere['texte'],
-            $enchere['prive']
+            $enchere['texte']
                 ]
         );
         return $result;

@@ -29,8 +29,6 @@ class ControleurEncheres extends Controleur {
             } else {
                 $enchere['nom'] = $this->requete->getParametre('nom');
                 $enchere['texte'] = $this->requete->getParametre('texte');
-                // Ajuster la valeur de la case à cocher
-                $enchere['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
                 // Ajouter le enchere à l'aide du modèle
                 $this->enchere->setEnchere($enchere);
             }

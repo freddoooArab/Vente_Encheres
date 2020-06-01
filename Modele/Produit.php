@@ -31,19 +31,20 @@ class Produit extends Modele {
 // Renvoie la liste de tous les produits, triés par identifiant décroissant
     public function setProduit($produit) {
         $sql = 'INSERT INTO produits ('
-                . ' titre,'
-                . ' sous_titre,'
-                . ' utilisateur_id,'
+                . ' nom,'
+                . ' description,'
+                . ' prix,'
                 . ' date,'
-                . ' texte,'
-                . ' type)'
+                . ' type,'
+                . ' utilisateur_id)'
                 . ' VALUES(?, ?, ?, NOW(), ?, ?)';
         $result = $this->executerRequete($sql, [
-            $produit['titre'],
-            $produit['sous_titre'],
-            $produit['utilisateur_id'],
-            $produit['texte'],
-            $produit['type']
+            $produit['nom'],
+            $produit['description'],
+            $produit['prix'],
+            $produit['date'],
+            $produit['type'],
+            $produit['utilisateur_id']
                 ]
         );
         return $result;
@@ -74,20 +75,20 @@ class Produit extends Modele {
 // Met à jour un produit
     public function updateProduit($produit) {
         $sql = 'UPDATE produits'
-                . ' SET titre = ?,'
-                . ' sous_titre = ?,'
-                . ' utilisateur_id = ?,'
+                . ' SET nom = ?,'
+                . ' description = ?,'
+                . ' prix = ?,'
                 . ' date = NOW(),'
-                . ' texte = ?,'
-                . ' type = ?'
+                . ' type = ?,'
+                . ' utilisateur_id = ?'
                 . ' WHERE id = ?';
         $result = $this->executerRequete($sql, [
-            $produit['titre'],
-            $produit['sous_titre'],
-            $produit['utilisateur_id'],
-            $produit['texte'],
+            $produit['nom'],
+            $produit['description'],
+            $produit['prix'],
+            $produit['date'],
             $produit['type'],
-            $produit['id']
+            $produit['utilisateur_id']
                 ]
         );
         return $result;

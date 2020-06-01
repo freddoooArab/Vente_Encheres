@@ -40,9 +40,10 @@ class ControleurAdminProduits extends ControleurAdmin {
             $this->requete->getSession()->setAttribut("message", "Ajouter un produit n'est pas permis en démonstration");
         } else {
             $produit['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
-            $produit['titre'] = $this->requete->getParametre('titre');
-            $produit['sous_titre'] = $this->requete->getParametre('sous_titre');
-            $produit['texte'] = $this->requete->getParametre('texte');
+            $produit['nom'] = $this->requete->getParametre('nom');
+            $produit['description'] = $this->requete->getParametre('description');
+            $produit['prix'] = $this->requete->getParametre('prix');
+            $produit['date'] = $this->requete->getParametre('date');
             $produit['type'] = $this->requete->getParametre('type');
             $this->produit->setProduit($produit);
             $this->executerAction('index');
@@ -62,11 +63,12 @@ class ControleurAdminProduits extends ControleurAdmin {
             $this->requete->getSession()->setAttribut("message", "Modifier un produit n'est pas permis en démonstration");
         } else {
             $produit['id'] = $this->requete->getParametreId('id');
-            $produit['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
-            $produit['titre'] = $this->requete->getParametre('titre');
-            $produit['sous_titre'] = $this->requete->getParametre('sous_titre');
-            $produit['texte'] = $this->requete->getParametre('texte');
+            $produit['nom'] = $this->requete->getParametre('nom');
+            $produit['description'] = $this->requete->getParametre('description');
+            $produit['prix'] = $this->requete->getParametre('prix');
+            $produit['date'] = $this->requete->getParametre('date');
             $produit['type'] = $this->requete->getParametre('type');
+            $produit['utilisateur_id'] = $this->requete->getParametreId('utilisateur_id');
             $this->produit->updateProduit($produit);
             $this->executerAction('index');
         }

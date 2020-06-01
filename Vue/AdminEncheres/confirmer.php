@@ -1,12 +1,12 @@
-<?php $this->titre = "Effacer - " . $this->nettoyer($enchere['titre']); ?>
+<?php $this->titre = "Effacer - " . $this->nettoyer($enchere['nom_enchere']); ?>
 
 <produit>
     <header>
         <p><h1>
             Effacer?
         </h1>
-        <?= $this->nettoyer($enchere['date']) ?>, <?= $this->nettoyer($enchere['auteur']) ?> dit : (privé? <?= $this->nettoyer($enchere['prive']) ?>)<br/>
-        <strong><?= $this->nettoyer($enchere['titre']) ?></strong><br/>
+        <?= $this->nettoyer($enchere['date']) ?>, <?= $this->nettoyer($enchere['auteur']) ?><br/>
+        <strong><?= $this->nettoyer($enchere['nom_enchere']) ?></strong><br/>
         <?= $this->nettoyer($enchere['texte']) ?>
         </p>
     </header>
