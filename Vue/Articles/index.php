@@ -1,16 +1,16 @@
 <?php $this->titre = 'Le Blogue du prof'; ?>
 
-<?php foreach ($articles as $article):
+<?php foreach ($produits as $produit):
     ?>
-    <article>
+    <produit>
         <header>
-            <a href="Articles/lire/<?= $this->nettoyer($article['id']) ?>">
-                <h1 class="titreArticle"><?= $this->nettoyer($article['titre']) ?></h1>
+            <a href="Produits/lire/<?= $this->nettoyer($produit['id']) ?>">
+                <h1 class="titreProduit"><?= $this->nettoyer($produit['titre']) ?></h1>
             </a>
-            <strong class=""><?= $this->nettoyer($article['sous_titre']) ?></strong><br>
-            par <?= $this->nettoyer($article['nom']) ?><br>
-            <time><?= $this->nettoyer($article['date']) ?></time>
+            <strong class=""><?= $this->nettoyer($produit['sous_titre']) ?></strong><br>
+            par <?= $this->nettoyer($produit['nom']) ?><br>
+            <time><?= $this->nettoyer($produit['date']) ?></time>
         </header>
-    </article>
+    </produit>
     <hr />
 <?php endforeach; ?>    

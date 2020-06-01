@@ -1,24 +1,24 @@
-<?php $this->titre = "Le Blogue du prof - Commentaires" ?>
+<?php $this->titre = "Le Blogue du prof - Encheres" ?>
 
 <header>
-    <h1 id="titreReponses">Commentaires du Blogue du prof :</h1>
+    <h1 id="titreReponses">Encheres du Blogue du prof :</h1>
 </header>
 <?php
-foreach ($commentaires as $commentaire):
+foreach ($encheres as $enchere):
     ?>
-    <?php if ($commentaire['efface'] == '0') : ?>
-        <p><a href="AdminCommentaires/confirmer/<?= $this->nettoyer($commentaire['id']) ?>" >
+    <?php if ($enchere['efface'] == '0') : ?>
+        <p><a href="AdminEncheres/confirmer/<?= $this->nettoyer($enchere['id']) ?>" >
                 [Effacer]</a>
-            <?= $this->nettoyer($commentaire['date']) ?>, <?= $this->nettoyer($commentaire['auteur']) ?> dit <?= $this->nettoyer($commentaire['prive']) ? '(EN PRIVÉ)' : '' ?> : <br/>
-            <strong><?= $this->nettoyer($commentaire['titre']) ?></strong><br/>
-            <?= $this->nettoyer($commentaire['texte']) ?><br />
-            <a href="Adminarticles/lire/<?= $this->nettoyer($commentaire['article_id']) ?>" >
-                [écrit pour l'article <i><?= $this->nettoyer($commentaire['titreArticle']) ?></i>]</a></a>
+            <?= $this->nettoyer($enchere['date']) ?>, <?= $this->nettoyer($enchere['auteur']) ?> dit <?= $this->nettoyer($enchere['prive']) ? '(EN PRIVÉ)' : '' ?> : <br/>
+            <strong><?= $this->nettoyer($enchere['titre']) ?></strong><br/>
+            <?= $this->nettoyer($enchere['texte']) ?><br />
+            <a href="Adminproduits/lire/<?= $this->nettoyer($enchere['produit_id']) ?>" >
+                [écrit pour l'produit <i><?= $this->nettoyer($enchere['titreProduit']) ?></i>]</a></a>
         </p>
     <?php else : ?>
-        <p class="efface"><a href="AdminCommentaires/retablir/<?= $this->nettoyer($commentaire['id']) ?>" >
+        <p class="efface"><a href="AdminEncheres/retablir/<?= $this->nettoyer($enchere['id']) ?>" >
                 [Rétablir]</a>
-            Commentaire du <?= $this->nettoyer($commentaire['date']) ?>, par <?= $this->nettoyer($commentaire['auteur']) ?> <?= $this->nettoyer($commentaire['prive']) ? '(EN PRIVÉ)' : '' ?> EFFACÉ!
+            Enchere du <?= $this->nettoyer($enchere['date']) ?>, par <?= $this->nettoyer($enchere['auteur']) ?> <?= $this->nettoyer($enchere['prive']) ? '(EN PRIVÉ)' : '' ?> EFFACÉ!
         </p>
     <?php endif; ?>
 <?php endforeach; ?>

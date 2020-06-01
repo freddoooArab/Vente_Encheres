@@ -1,12 +1,12 @@
 <?php
 
-require_once 'Modele/Commentaire.php';
+require_once 'Modele/Enchere.php';
 
-$tstCommentaire = new Commentaire;
-$commentaires = $tstCommentaire->getCommentaires(1);
-echo '<h3>Test getCommentaires : </h3>';
-var_dump($commentaires->rowCount());
+$tstEnchere = new Enchere;
+$encheres = $tstEnchere->getEncheres(1);
+echo '<h3>Test getEncheres : </h3>';
+var_dump($encheres->rowCount());
 
-$commentaire = $tstCommentaire->getCommentaire(5);
-echo '<h3>Test getCommentaire : </h3>';
-var_dump($commentaire);
+$enchere = $tstEnchere->getEnchere(5);
+echo '<h3>Test getEnchere : </h3>';
+var_dump($enchere);

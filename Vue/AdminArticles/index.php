@@ -1,21 +1,21 @@
 <?php $this->titre = 'Le Blogue du prof'; ?>
 
-<a href="Adminarticles/ajouter">
-    <h2 class="titreArticle">Ajouter un article</h2>
+<a href="Adminproduits/ajouter">
+    <h2 class="titreProduit">Ajouter un produit</h2>
 </a>
-<?php foreach ($articles as $article):
+<?php foreach ($produits as $produit):
     ?>
 
-    <article>
+    <produit>
         <header>
-            <a href="Adminarticles/lire/<?= $this->nettoyer($article['id']) ?>">
-                <h1 class="titreArticle"><?= $this->nettoyer($article['titre']) ?></h1>
+            <a href="Adminproduits/lire/<?= $this->nettoyer($produit['id']) ?>">
+                <h1 class="titreProduit"><?= $this->nettoyer($produit['titre']) ?></h1>
             </a>
-            <strong class=""><?= $this->nettoyer($article['sous_titre']) ?></strong><br>
-            par <?= $this->nettoyer($article['nom']) ?><br>
-            <time><?= $this->nettoyer($article['date']) ?></time><br>
-            <a href="Adminarticles/modifier/<?= $this->nettoyer($article['id']) ?>"> [modifier l'article]</a>
+            <strong class=""><?= $this->nettoyer($produit['sous_titre']) ?></strong><br>
+            par <?= $this->nettoyer($produit['nom']) ?><br>
+            <time><?= $this->nettoyer($produit['date']) ?></time><br>
+            <a href="Adminproduits/modifier/<?= $this->nettoyer($produit['id']) ?>"> [modifier l'produit]</a>
         </header>
-    </article>
+    </produit>
     <hr />
 <?php endforeach; ?>    

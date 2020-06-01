@@ -1,49 +1,49 @@
 <?php
 
 require_once 'Framework/Controleur.php';
-require_once 'Modele/Commentaire.php';
+require_once 'Modele/Enchere.php';
 
-class ControleurCommentaires extends Controleur {
+class ControleurEncheres extends Controleur {
 
-    private $commentaire;
+    private $enchere;
 
     public function __construct() {
-        $this->commentaire = new Commentaire();
+        $this->enchere = new Enchere();
     }
 
 // L'action index n'est pas utilisée mais pourrait ressembler à ceci 
-// en ajoutant la fonctionnalité de faire afficher tous les commentaires
+// en ajoutant la fonctionnalité de faire afficher tous les encheres
     public function index() {
-        $commentaires = $this->commentaire->getCommentairesPublics();
-        $this->genererVue(['commentaires' => $commentaires]);
+        $encheres = $this->enchere->getEncheresPublics();
+        $this->genererVue(['encheres' => $encheres]);
     }
 
-// Ajoute un commentaire à un article
+// Ajoute un enchere à un produit
     public function ajouter() {
-        $commentaire['article_id'] = $this->requete->getParametreId("article_id");
-        $commentaire['auteur'] = $this->requete->getParametre('auteur');
-        $validation_courriel = filter_var($commentaire['auteur'], FILTER_VALIDATE_EMAIL);
+        $enchere['produit_id'] = $this->requete->getParametreId("produit_id");
+        $enchere['auteur'] = $this->requete->getParametre('auteur');
+        $validation_courriel = filter_var($enchere['auteur'], FILTER_VALIDATE_EMAIL);
         if ($validation_courriel) {
             if ($this->requete->getSession()->getAttribut("env") == 'prod') {
-                $this->requete->getSession()->setAttribut("message", "Ajouter un commentaire n'est pas permis en démonstration");
+                $this->requete->getSession()->setAttribut("message", "Ajouter un enchere n'est pas permis en démonstration");
             } else {
-                $commentaire['titre'] = $this->requete->getParametre('titre');
-                $commentaire['texte'] = $this->requete->getParametre('texte');
+                $enchere['titre'] = $this->requete->getParametre('titre');
+                $enchere['texte'] = $this->requete->getParametre('texte');
                 // Ajuster la valeur de la case à cocher
-                $commentaire['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
-                // Ajouter le commentaire à l'aide du modèle
-                $this->commentaire->setCommentaire($commentaire);
+                $enchere['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
+                // Ajouter le enchere à l'aide du modèle
+                $this->enchere->setEnchere($enchere);
             }
             // Éliminer un code d'erreur éventuel
             if ($this->requete->getSession()->existeAttribut('erreur')) {
                 $this->requete->getsession()->setAttribut('erreur', '');
             }
-            //Recharger la page pour mettre à jour la liste des commentaires associés
-            $this->rediriger('Articles', 'lire/' . $commentaire['article_id']);
+            //Recharger la page pour mettre à jour la liste des encheres associés
+            $this->rediriger('Produits', 'lire/' . $enchere['produit_id']);
         } else {
             //Recharger la page avec une erreur près du courriel
             $this->requete->getSession()->setAttribut('erreur', 'courriel');
-            $this->rediriger('Articles', 'lire/' . $commentaire['article_id']);
+            $this->rediriger('Produits', 'lire/' . $enchere['produit_id']);
         }
     }
 

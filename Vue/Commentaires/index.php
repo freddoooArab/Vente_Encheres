@@ -1,18 +1,18 @@
-<?php $this->titre = "Le Blogue du prof - Commentaires" ?>
+<?php $this->titre = "Le Blogue du prof - Encheres" ?>
 
 <header>
-    <h1 id="titreReponses">Commentaires du Blogue du prof :</h1>
+    <h1 id="titreReponses">Encheres du Blogue du prof :</h1>
 </header>
 <?php
-foreach ($commentaires as $commentaire):
+foreach ($encheres as $enchere):
     ?>
     <?php 
         ?>
-        <p><?= $this->nettoyer($commentaire['date']) ?>, <?= $this->nettoyer($commentaire['auteur']) ?> dit <?= $this->nettoyer($commentaire['prive']) ? '(EN PRIVÉ)' : '' ?> : <br/>
-            <strong><?= $this->nettoyer($commentaire['titre']) ?></strong><br/>
-            <?= $this->nettoyer($commentaire['texte']) ?><br />
-            <!-- Vers Adminarticles si utilisateur en session -->
-            <a href="<?= ($utilisateur != '') ? 'Admin' : '' ?>Articles/lire/<?= $this->nettoyer($commentaire['article_id']) ?>" >
-                [écrit pour l'article <i><?= $this->nettoyer($commentaire['titreArticle']) ?></i>]</a>
+        <p><?= $this->nettoyer($enchere['date']) ?>, <?= $this->nettoyer($enchere['auteur']) ?> dit <?= $this->nettoyer($enchere['prive']) ? '(EN PRIVÉ)' : '' ?> : <br/>
+            <strong><?= $this->nettoyer($enchere['titre']) ?></strong><br/>
+            <?= $this->nettoyer($enchere['texte']) ?><br />
+            <!-- Vers Adminproduits si utilisateur en session -->
+            <a href="<?= ($utilisateur != '') ? 'Admin' : '' ?>Produits/lire/<?= $this->nettoyer($enchere['produit_id']) ?>" >
+                [écrit pour l'produit <i><?= $this->nettoyer($enchere['titreProduit']) ?></i>]</a>
         </p>
 <?php endforeach; ?>

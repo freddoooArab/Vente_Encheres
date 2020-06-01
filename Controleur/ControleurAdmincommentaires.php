@@ -1,51 +1,51 @@
 <?php
 
 require_once 'Controleur/ControleurAdmin.php';
-require_once 'Modele/Commentaire.php';
+require_once 'Modele/Enchere.php';
 
-class ControleurAdminCommentaires extends ControleurAdmin {
+class ControleurAdminEncheres extends ControleurAdmin {
 
-    private $commentaire;
+    private $enchere;
 
     public function __construct() {
-        $this->commentaire = new Commentaire();
+        $this->enchere = new Enchere();
     }
 
 // L'action index n'est pas utilisée mais pourrait ressembler à ceci 
-// en ajoutant la fonctionnalité de faire afficher tous les commentaires
+// en ajoutant la fonctionnalité de faire afficher tous les encheres
     public function index() {
-        $commentaires = $this->commentaire->getCommentaires();
-        $this->genererVue(['commentaires' => $commentaires]);
+        $encheres = $this->enchere->getEncheres();
+        $this->genererVue(['encheres' => $encheres]);
     }
   
-// Confirmer la suppression d'un commentaire
+// Confirmer la suppression d'un enchere
     public function confirmer() {
         $id = $this->requete->getParametreId("id");
-        // Lire le commentaire à l'aide du modèle
-        $commentaire = $this->commentaire->getCommentaire($id);
-        $this->genererVue(['commentaire' => $commentaire]);
+        // Lire le enchere à l'aide du modèle
+        $enchere = $this->enchere->getEnchere($id);
+        $this->genererVue(['enchere' => $enchere]);
     }
 
-// Supprimer un commentaire
+// Supprimer un enchere
     public function supprimer() {
         $id = $this->requete->getParametreId("id");
-        // Lire le commentaire afin d'obtenir le id de l'article associé
-        $commentaire = $this->commentaire->getCommentaire($id);
-        // Supprimer le commentaire à l'aide du modèle
-        $this->commentaire->deleteCommentaire($id);
-        //Recharger la page pour mettre à jour la liste des commentaires associés
-        $this->rediriger('Adminarticles', 'lire/' . $commentaire['article_id']);
+        // Lire le enchere afin d'obtenir le id de l'produit associé
+        $enchere = $this->enchere->getEnchere($id);
+        // Supprimer le enchere à l'aide du modèle
+        $this->enchere->deleteEnchere($id);
+        //Recharger la page pour mettre à jour la liste des encheres associés
+        $this->rediriger('Adminproduits', 'lire/' . $enchere['produit_id']);
     }
 
-    // Rétablir un commentaire
+    // Rétablir un enchere
     public function retablir() {
         $id = $this->requete->getParametreId("id");
-        // Lire le commentaire afin d'obtenir le id de l'article associé
-        $commentaire = $this->commentaire->getCommentaire($id);
-        // Supprimer le commentaire à l'aide du modèle
-        $this->commentaire->restoreCommentaire($id);
-        //Recharger la page pour mettre à jour la liste des commentaires associés
-        $this->rediriger('Adminarticles', 'lire/' . $commentaire['article_id']);
+        // Lire le enchere afin d'obtenir le id de l'produit associé
+        $enchere = $this->enchere->getEnchere($id);
+        // Supprimer le enchere à l'aide du modèle
+        $this->enchere->restoreEnchere($id);
+        //Recharger la page pour mettre à jour la liste des encheres associés
+        $this->rediriger('Adminproduits', 'lire/' . $enchere['produit_id']);
     }
 
 }

@@ -13,8 +13,8 @@
             <header>
                 <a href="index.php"><h1 id="titreBlog">Vente aux Enchères</h1></a>
                 <p>Version avec démarrage de session pour accès aux opérations de gestion</p>
-                <a href="<?= $utilisateur != '' ? 'Admin' : ''; ?>Commentaires">
-                    <h4>Afficher tous les commentaires de tous les articles</h4>
+                <a href="<?= $utilisateur != '' ? 'Admin' : ''; ?>Encheres">
+                    <h4>Afficher tous les encheres de tous les produits</h4>
                 </a>
                 <a href="apropos">
                     <h4>À propos</h4>
