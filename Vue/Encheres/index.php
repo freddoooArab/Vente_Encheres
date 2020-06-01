@@ -1,7 +1,7 @@
-<?php $this->titre = "Le Blogue du prof - Encheres" ?>
+<?php $this->titre = "Vente Encheres" ?>
 
 <header>
-    <h1 id="titreReponses">Encheres du Blogue du prof :</h1>
+    <h1 id="titreReponses">Encheres ouvertes :</h1>
 </header>
 <?php
 foreach ($encheres as $enchere):
@@ -9,7 +9,7 @@ foreach ($encheres as $enchere):
     <?php 
         ?>
         <p><?= $this->nettoyer($enchere['date']) ?>, <?= $this->nettoyer($enchere['auteur']) ?> dit <?= $this->nettoyer($enchere['prive']) ? '(EN PRIVÉ)' : '' ?> : <br/>
-            <strong><?= $this->nettoyer($enchere['titre']) ?></strong><br/>
+            <strong><?= $this->nettoyer($enchere['nom_enchere']) ?></strong><br/>
             <?= $this->nettoyer($enchere['texte']) ?><br />
             <!-- Vers Adminproduits si utilisateur en session -->
             <a href="<?= ($utilisateur != '') ? 'Admin' : '' ?>Produits/lire/<?= $this->nettoyer($enchere['produit_id']) ?>" >

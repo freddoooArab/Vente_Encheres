@@ -25,9 +25,9 @@ class ControleurEncheres extends Controleur {
         $validation_courriel = filter_var($enchere['auteur'], FILTER_VALIDATE_EMAIL);
         if ($validation_courriel) {
             if ($this->requete->getSession()->getAttribut("env") == 'prod') {
-                $this->requete->getSession()->setAttribut("message", "Ajouter un enchere n'est pas permis en démonstration");
+                $this->requete->getSession()->setAttribut("message", "Ajouter une enchère n'est pas permis en démonstration");
             } else {
-                $enchere['titre'] = $this->requete->getParametre('titre');
+                $enchere['nom'] = $this->requete->getParametre('nom');
                 $enchere['texte'] = $this->requete->getParametre('texte');
                 // Ajuster la valeur de la case à cocher
                 $enchere['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;

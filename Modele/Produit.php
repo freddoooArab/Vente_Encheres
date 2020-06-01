@@ -11,16 +11,14 @@ class Produit extends Modele {
 
 // Renvoie la liste de tous les produits, triés par identifiant décroissant avec le nom de l'utilisateus lié
     public function getProduits() {
-//        $sql = 'select produits.id, titre, sous_titre, utilisateur_id, date, texte, type, nom from produits, utilisateurs'
-//                . ' where produits.utilisateur_id = utilisateurs.id order by ID desc';
         $sql = 'SELECT a.id,'
-                . ' a.titre,'
-                . ' a.sous_titre,'
-                . ' a.utilisateur_id,'
+                . ' a.nom,'
+                . ' a.description,'
+                . ' a.prix,'
                 . ' a.date,'
-                . ' a.texte,'
                 . ' a.type,'
-                . ' u.nom,'
+                . ' a.utilisateur_id,'
+                . ' u.nom as Username,'
                 . ' u.identifiant'
                 . ' FROM produits a'
                 . ' INNER JOIN utilisateurs u'
@@ -54,13 +52,13 @@ class Produit extends Modele {
 // Renvoie les informations sur un produit avec le nom de l'utilisateur lié
     function getProduit($idProduit) {
         $sql = 'SELECT a.id,'
-                . ' a.titre,'
-                . ' a.sous_titre,'
-                . ' a.utilisateur_id,'
+                . ' a.nom,'
+                . ' a.description,'
+                . ' a.prix,'
                 . ' a.date,'
-                . ' a.texte,'
                 . ' a.type,'
-                . ' u.nom'
+                . ' a.utilisateur_id,'
+                . ' u.nom as Username'
                 . ' FROM produits a'
                 . ' INNER JOIN utilisateurs u'
                 . ' ON a.utilisateur_id = u.id'
